@@ -15,7 +15,7 @@
 #=============================================================
 '''
     Example - Two conv layers with three fully connected layers for mnist dataset:
-    
+
         from conv_net import ConvNet
         conv_net = ConvNet("Test_Name", [28, 28], [[5, 5, 1, 32], [5, 5, 32, 64], 7*7*64, 100, 10])
 
