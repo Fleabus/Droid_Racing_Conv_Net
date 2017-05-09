@@ -21,7 +21,7 @@ def train_neural_network():
             epoch_loss = 0
             # Divide the dataset by the batch size
             for _ in range(int(mnist.train.num_examples / batch_size)):
-                epoch_x, epoch_y = mnist.train.next_batch(batch_size) # Magically gets the next batch
+                epoch_x, epoch_y = mnist.train.next_batch(batch_size)
                 c = conv_net.train(epoch_x, epoch_y)
                 epoch_loss += c # adds the cost to the total loss of this epoch
 

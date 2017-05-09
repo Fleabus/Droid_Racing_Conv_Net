@@ -135,11 +135,14 @@ class ConvNet:
                         'bias': self.bias_variable([layer_nodes])
                     }
                     with tf.name_scope("matmul"):
-                        mat_result = tf.matmul(prev_result, layer['weights'])
-                    with tf.name_scope("relu"):
-                        l_result = tf.nn.relu(mat_result) + layer['bias']
-                    prev_result = l_result
-        return prev_result
+                        mat_result = tf.matmul(prev_result, layer['weights']) + layer['bias']
+                   
+                    if(i != len(self.fcl_shape[1:])-1):
+                        with tf.name_scope("relu"):
+                            l_result = tf.nn.relu(mat_result)
+                            prev_result = l_result
+                    else:
+                       return mat_result
 
     #========== Helper Functions========
     # returns the result of the convolutional layers over an image
