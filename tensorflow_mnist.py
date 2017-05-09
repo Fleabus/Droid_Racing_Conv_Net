@@ -3,7 +3,7 @@ import tensorflow as tf
 from conv_net import ConvNet
 from tensorflow.examples.tutorials.mnist import input_data
 # Input data | 60,000 training samples | 10,000 testing samples
-mnist = input_data.read_data_sets("/MNIST_data/", one_hot=True)
+mnist = input_data.read_data_sets("temp_folder/", one_hot=True)
 
 # The session to run
 def train_neural_network():
@@ -16,9 +16,9 @@ def train_neural_network():
         conv_net.setup_model(sess)
         # Create a summary writer, add the 'graph' to the event file.
         writer = tf.summary.FileWriter('./logs/test_log', sess.graph)
-        epoch_loss = 0
         # begin epochs
         for epoch in range(hm_epochs):
+            epoch_loss = 0
             # Divide the dataset by the batch size
             for _ in range(int(mnist.train.num_examples / batch_size)):
                 epoch_x, epoch_y = mnist.train.next_batch(batch_size) # Magically gets the next batch
